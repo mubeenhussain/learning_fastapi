@@ -1,10 +1,17 @@
 from pydantic import BaseModel
 
-class UserSchema(BaseModel):
-    name:str
-    email:str
-    password:str
-    
+class UserCreate(BaseModel):
+    name: str
+    email: str
+    password: str
+
+class UserOut(BaseModel):
+    id: int
+    name: str
+    email: str
+
+    class Config:
+        orm_mode = True
 
 class LoginSchema(BaseModel):
     email: str
