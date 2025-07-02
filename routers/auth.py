@@ -21,6 +21,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(new_user)
     return new_user
 
+
 @router.post("/login")
 def login(form_data: LoginSchema, db: Session = Depends(get_db)):
     user = db.query(UserModal).filter(UserModal.email == form_data.email).first()
