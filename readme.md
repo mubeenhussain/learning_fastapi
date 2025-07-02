@@ -9,3 +9,5 @@ source venv/bin/activate
 Run your FastAPI app with uvicorn:
 
 uvicorn app:app --reload
+
+pip install 'passlib[bcrypt]'
