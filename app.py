@@ -11,7 +11,6 @@ app = FastAPI()
 app.middleware("http")(auth_middleware)
 
 app.include_router(auth.router, prefix="/api",tags=["Authentication"])
-app.include_router(product.router, prefix="/api",tags=["Products"])
 
 # if __name__ == "__main__":
 #     app = app()
