@@ -4,3 +4,4 @@ pydantic
 sqlalchemy
 psycopg[binary]
 python-jose
+pyjwt
