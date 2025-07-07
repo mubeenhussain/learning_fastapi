@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, JSON
 from database import Base
 
 class UserModal(Base):
@@ -8,4 +8,4 @@ class UserModal(Base):
     name = Column(String)
     email = Column(String)
     password = Column(String)
-
+    roles = Column(JSON, default=list)

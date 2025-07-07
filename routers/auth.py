@@ -17,7 +17,8 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     new_user = UserModal(
         name=user.name,
         email=user.email,
-        password=hash_password(user.password)
+        password=hash_password(user.password),
+        roles=[role.value for role in user.roles]  # store as list of strings
     )
     db.add(new_user)
     db.commit()

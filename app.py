@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from database import Base,engine
-from routers import auth, product
+from routers import auth
 from core.auth_middleware import auth_middleware
 
 

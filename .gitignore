@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pkl
+*.egg-info/
+*.egg
+*.log
+
+# Virtual envs
+env/
+venv/
+ENV/
+.venv/
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Migrations (if using Alembic)
+alembic/versions/
+
+# Databases
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
+
+# __pycache__ in any subfolder
+./__pycache__
+
+# FastAPI OpenAPI cache (if generated somewhere)
+openapi.json
