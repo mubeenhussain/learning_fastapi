@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from models.task import TaskModel
 from schemas.task import TaskCreate, TaskUpdate
 
-def create_task(db: Session, task: TaskCreate, owner_id: int):
+def create_tasks(db: Session, task: TaskCreate, owner_id: int):
     db_task = TaskModel(**task.dict(), owner_id=owner_id)
     db.add(db_task)
     db.commit()

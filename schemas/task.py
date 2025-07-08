@@ -4,6 +4,7 @@ from typing import Optional
 class TaskBase(BaseModel):
     title : str
     description: Optional[str] = None
+    is_completed: Optional[bool] = None
     
     
 class TaskCreate(TaskBase):

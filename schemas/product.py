@@ -10,5 +10,5 @@ class ProductCreate(BaseModel):
 class ProductOut(ProductCreate):
     id: int
 
-    class Config:
+    class Config: 
         orm_mode = True

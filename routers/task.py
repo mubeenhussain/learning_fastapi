@@ -8,8 +8,8 @@ from controller import task
 router = APIRouter()
 
 @router.post("/", response_model=TaskOut)
-def create(task: TaskCreate, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
-    return task.create_task(db, task, owner_id=current_user.id)
+def create(taskdata: TaskCreate, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
+    return task.create_tasks(db, taskdata, owner_id=current_user.id)
 
 @router.get("/", response_model=list[TaskOut])
 def read_all(db: Session = Depends(get_db), current_user = Depends(get_current_user)):
@@ -36,5 +36,3 @@ def delete(task_id: int, db: Session = Depends(get_db), current_user = Depends(g
         raise HTTPException(status_code=404, detail="Task not found")
     task.delete_task(db, db_task)
     return
-    
-

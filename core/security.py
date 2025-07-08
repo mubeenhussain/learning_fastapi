@@ -10,7 +10,7 @@ from models.user import UserModal
 
 SECRET_KEY = "tgs1234"
 ALGORITHM = "HS256"
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")  # your login path!
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")  # your login path!
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
