@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, JSON
 from database import Base
+from sqlalchemy.orm import relationship
 
 class UserModal(Base):
     __tablename__ = 'users'
@@ -9,3 +10,4 @@ class UserModal(Base):
     email = Column(String)
     password = Column(String)
     roles = Column(JSON, default=list)
+    
