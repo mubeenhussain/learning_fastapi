@@ -11,4 +11,9 @@ class UserModal(Base):
     password = Column(String)
     roles = Column(JSON, default=list)
     
+    
+    # 1 to many relationship built
     tasks = relationship("TaskModel", back_populates="owner")
+    
+    # 1 to 1 relationship 
+    profile = relationship("ProfileModal", back_populates="user", uselist=False)
