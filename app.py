@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from database import Base,engine
 from routers import auth,task,product
 from core.auth_middleware import auth_middleware
+import httpx  # async HTTP client
 
 Base.metadata.create_all(bind=engine)
 
@@ -17,7 +18,13 @@ app.middleware("http")(auth_middleware)
 #           **address.model_dump()
 #         }
 #     }
-    
+@app.get('/')
+async def get_github():
+    async with httpx.AsyncClient() as client:
+        response = await client.get("https://api.github.com")
+    return response.json()
+
+
 app.include_router(product.router, prefix="/product",tags=["Products"])   
 app.include_router(auth.router, prefix="/api",tags=["Authentication"])
 app.include_router(task.router ,prefix="/tasks", tags=["Tasks"])
