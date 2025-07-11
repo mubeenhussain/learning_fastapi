@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from database import Base,engine
-from routers import auth,task
+from routers import auth,task,product
 from core.auth_middleware import auth_middleware
-
 
 Base.metadata.create_all(bind=engine)
 
@@ -10,6 +9,16 @@ app = FastAPI()
 
 app.middleware("http")(auth_middleware)
 
+# @app.post('/register')
+# async def register(user:UserDetail, address: Address):
+#     return {
+#       "data" : {
+#           **user.model_dump(),
+#           **address.model_dump()
+#         }
+#     }
+    
+app.include_router(product.router, prefix="/product",tags=["Products"])   
 app.include_router(auth.router, prefix="/api",tags=["Authentication"])
 app.include_router(task.router ,prefix="/tasks", tags=["Tasks"])
 

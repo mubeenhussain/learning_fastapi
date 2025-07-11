@@ -17,3 +17,5 @@ class UserModal(Base):
     
     # 1 to 1 relationship 
     profile = relationship("ProfileModal", back_populates="user", uselist=False)
+    
+    posts = relationship("Post", backref='author')
