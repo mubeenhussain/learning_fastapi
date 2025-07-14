@@ -10,19 +10,7 @@ app = FastAPI()
 
 app.middleware("http")(auth_middleware)
 
-# @app.post('/register')
-# async def register(user:UserDetail, address: Address):
-#     return {
-#       "data" : {
-#           **user.model_dump(),
-#           **address.model_dump()
-#         }
-#     }
-@app.get('/')
-async def get_github():
-    async with httpx.AsyncClient() as client:
-        response = await client.get("https://api.github.com")
-    return response.json()
+
 
 
 app.include_router(product.router, prefix="/product",tags=["Products"])   
