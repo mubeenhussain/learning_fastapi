@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from database import Base,engine
-from routers import auth,task,product
+from routers import auth
 from core.auth_middleware import auth_middleware
 import httpx  # async HTTP client
 
@@ -13,9 +13,7 @@ app.middleware("http")(auth_middleware)
 
 
 
-app.include_router(product.router, prefix="/product",tags=["Products"])   
 app.include_router(auth.router, prefix="/api",tags=["Authentication"])
-app.include_router(task.router ,prefix="/tasks", tags=["Tasks"])
 
 # if __name__ == "__main__":
 #     app = app()
