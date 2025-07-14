@@ -13,9 +13,9 @@ class UserModal(Base):
     
     
     # 1 to many relationship built
-    tasks = relationship("TaskModel", back_populates="owner")
+    # tasks = relationship("TaskModel", back_populates="owner")
     
-    # 1 to 1 relationship 
-    profile = relationship("ProfileModal", back_populates="user", uselist=False)
+    # # 1 to 1 relationship 
+    # profile = relationship("ProfileModal", back_populates="user", uselist=False)
     
-    posts = relationship("Post", backref='author')
+    # posts = relationship("Post", backref='author')
