@@ -3,7 +3,7 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 
 from database import Base  # 👈 ONE shared Base
-from models import user, task  # 👈 Import to register the models
+from models import user  # 👈 Import to register the models
 
 config = context.config
 

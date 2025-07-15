@@ -3,11 +3,13 @@ from sqlalchemy.orm import Session
 from schemas.product import ProductCreate, ProductOut
 from database import get_db
 from models.product import ProductModal
+from core.security import get_current_user
 
 router = APIRouter()
 
 @router.post("/add", response_model=ProductOut)
-def add_product(data: ProductCreate, db: Session = Depends(get_db)):
+def add_product(data: ProductCreate, db: Session = Depends(get_db), user=Depends(get_current_user)):
+    print(user)
     product = ProductModal(**data.dict())
     db.add(product)
     db.commit()

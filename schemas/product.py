@@ -16,6 +16,7 @@ class ProductCreate(ProductBase):
 
 class ProductOut(ProductBase):
     id: int
+    # owner_id: int
 
     class Config:
         orm_mode = True
