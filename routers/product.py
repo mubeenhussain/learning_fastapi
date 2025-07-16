@@ -28,7 +28,7 @@ def get_product(product_id: int, db: Session = Depends(get_db)):
     return product
 
 @router.put("/{product_id}", response_model=ProductOut)
-def update_product(product_id: int, data: ProductCreate, db: Session = Depends(get_db)):
+def update_product(product_id: int, data: ProductCreate, db: Session = Depends(get_db), user=Depends(get_current_user)):
     product = db.query(ProductModal).filter(ProductModal.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
@@ -39,7 +39,7 @@ def update_product(product_id: int, data: ProductCreate, db: Session = Depends(g
     return product
 
 @router.delete("/{product_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_product(product_id: int, db: Session = Depends(get_db)):
+def delete_product(product_id: int, db: Session = Depends(get_db) , user=Depends(get_current_user)):
     product = db.query(ProductModal).filter(ProductModal.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
